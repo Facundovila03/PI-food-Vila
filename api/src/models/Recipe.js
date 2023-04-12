@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     image: {
       type: DataTypes.STRING,
@@ -22,13 +23,16 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    healthScore: {
+    health_score: {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
     instructions: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    dietas: {
+      type: DataTypes.STRING,
     },
   });
 };
