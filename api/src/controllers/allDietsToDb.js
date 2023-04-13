@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Diet } = require("../db");
 const axios = require("axios");
 require("dotenv").config();
@@ -12,16 +13,21 @@ const getAllDiets = (req, res) => {
       .then(({ data }) => {
         const arrayDietas = [];
         const aux = data.results.flatMap((e) => e.diets);
-        console.log(aux);
+        data.results.forEach((element) => {
+          if (element.vegetarian) arrayDietas.push("vegetarian"); //*pusheo vegetarian que esta fuera del array de diets
+          return;
+        });
         aux.forEach((element) => {
+          //*por cada elemento de results me pregunto si ya esta en el array, si no esta lo pusheo si esta sigue el for
           if (!arrayDietas.includes(element)) {
             arrayDietas.push(element);
           }
         });
-        return arrayDietas;
+        const aux2 = new Set(arrayDietas); //* hago un set pq vegetarian me traia repetidos
+        return aux2;
       })
-      .then((arrayDietas) => {
-        arrayDietas.forEach((element) => {
+      .then(async (aux2) => {
+        aux2.forEach((element) => {
           Diet.findOrCreate({
             where: { name: element },
             defaults: {
@@ -32,10 +38,11 @@ const getAllDiets = (req, res) => {
       })
       .then(async () => {
         const dietas = await Diet.findAll();
-        console.log(dietas);
         res.status(200).json(dietas);
       });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500), json({ error: error.message });
+  }
 };
 
 module.exports = getAllDiets;

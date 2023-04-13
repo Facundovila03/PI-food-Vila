@@ -6,7 +6,6 @@ const { Op } = require("sequelize");
 //! teoricamente no necesito recibir todo porque cuando le de a search se van a ver cards  y ahi no muestro instructions por ej  y seguramente summary tmp
 const getRecipeByName = (req, res) => {
   const { name } = req.query;
-  console.log(name);
   try {
     axios
       .get(
@@ -33,10 +32,16 @@ const getRecipeByName = (req, res) => {
             },
           },
         });
-        aux.forEach((element) => {
-          aux1.push(element);
-        });
-        res.status(200).json(aux1); //* si no encuentra nada me tira un array vacio asi q ojo
+        if (aux.length !== 0) {
+          aux.forEach((element) => {
+            aux1.push(element);
+          });
+        }
+        aux1.length === 0
+          ? res
+              .status(400)
+              .json({ error: "No se encontro una receta con ese nombre" })
+          : res.status(200).json(aux1); //* si no encuentra nada me tira un array vacio asi q ojo
       });
   } catch (error) {
     res.status(500).json({ error: error.message });
