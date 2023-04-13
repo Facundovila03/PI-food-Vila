@@ -13,8 +13,10 @@ const getAllDiets = (req, res) => {
       .then(({ data }) => {
         const arrayDietas = [];
         const aux = data.results.flatMap((e) => e.diets);
+        // res.json(data.results);
         data.results.forEach((element) => {
           if (element.vegetarian) arrayDietas.push("vegetarian"); //*pusheo vegetarian que esta fuera del array de diets
+          if (!element.lowFodmap) arrayDietas.push("lowFodmap");
           return;
         });
         aux.forEach((element) => {
