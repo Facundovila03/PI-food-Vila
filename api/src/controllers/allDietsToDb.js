@@ -8,17 +8,17 @@ const getAllDiets = (req, res) => {
   try {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
       )
       .then(({ data }) => {
         const arrayDietas = [];
         const aux = data.results.flatMap((e) => e.diets);
         // res.json(data.results);
-        data.results.forEach((element) => {
-          if (element.vegetarian) arrayDietas.push("vegetarian"); //*pusheo vegetarian que esta fuera del array de diets
-          if (!element.lowFodmap) arrayDietas.push("lowFodmap");
-          return;
-        });
+        // data.results.forEach((element) => {
+        //   if (element.vegetarian) arrayDietas.push("vegetarian"); //*pusheo vegetarian que esta fuera del array de diets
+        //   if (!element.lowFodmap) arrayDietas.push("lowFodmap");
+        //   return;
+        // });
         aux.forEach((element) => {
           //*por cada elemento de results me pregunto si ya esta en el array, si no esta lo pusheo si esta sigue el for
           if (!arrayDietas.includes(element)) {
