@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { API_KEY } = process.env;
-const { Op } = require("sequelize");
-const { Recipe, sequelize } = require("../db");
+const { Recipe, Diet } = require("../db");
 const axios = require("axios");
 
 const getRecipeDetail = async (req, res) => {
@@ -12,7 +11,7 @@ const getRecipeDetail = async (req, res) => {
     console.log("buscare en la api");
     await axios
       .get(
-        `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${API_KEY}`
+        `https://api.spoonacular.com/recipes/${idRecipe}/information?apiKey=${API_KEY}&addRecipeInformation=true`
       )
       .then(({ data }) => {
         const { title, image, summary, instructions, healthScore, diets } =
@@ -23,7 +22,15 @@ const getRecipeDetail = async (req, res) => {
     //* sino se lo pido a mi bdd
     console.log("buscare en la bdd");
     try {
-      const encontrado = await Recipe.findByPk(idRecipe);
+      const encontrado = await Recipe.findByPk(idRecipe, {
+        include: {
+          model: Diet,
+          attirbutes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      });
       res.status(200).json(encontrado);
     } catch (error) {
       res.status(400).json({ error: error.message });

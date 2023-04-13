@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Recipe } = require("../db");
 
 const createRecipe = async (req, res) => {
-  const { name, image, summary, health_score, instructions, dietas } = req.body;
+  const { name, image, summary, health_score, instructions, diets } = req.body;
   try {
     const [recipe, created] = await Recipe.findOrCreate({
       where: { name },
@@ -12,9 +12,9 @@ const createRecipe = async (req, res) => {
         summary,
         health_score,
         instructions,
-        dietas,
       },
     });
+    recipe.addDiets(diets);
     if (created) {
       res.status(201).json({ recipe });
     } else {
