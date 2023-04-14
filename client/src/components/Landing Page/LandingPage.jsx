@@ -6,7 +6,9 @@ export default function LandingPage() {
     <div className={styles.Contenedor}>
       <div className={styles.DivLargo}>WELCOME</div>
       <div className={styles.Welcome}>
-        <div style={{ width: "30vw" }}>
+        <div
+          style={{ width: "30vw", display: "flex", flexDirection: "column" }}
+        >
           <h2>Muchas gracias por visitar mi pagina...</h2>
           <h4>
             Esta fue desarrollada por mi, Facundo Vila, con el fin de ser
