@@ -1,0 +1,87 @@
+@font-face {
+ font-family: WELCOME;
+ src: url(https://fonts.google.com/specimen/DM+Serif+Display?preview.text=WELCOME&preview.size=79&preview.text_type=custom); 
+}
+.Contenedor{
+    background-image: url('../../backsplashLandingPage.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  overflow: hidden;
+}
+
+.DivLargo{
+  font-family: WELCOME;
+  color:black;
+  font-style: italic;
+  width:100vw;
+  font-size: 9vh;
+  background-color: rgba(250, 230, 230,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  mix-blend-mode: screen;
+}
+.Welcome{
+  background-color: rgba(250, 230, 230,0.7);
+  width:100vw;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: normal;
+  font-size: 1.5vh;
+  padding: 10px;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+.Boton{
+  background-color: #B83930;
+  padding:0.5vh 1vh;
+  border-radius: 10%;
+  border: 0px;
+}
+/*
+.Contenedor{
+  background-color: #E2B93D;
+  font-family: welcome;
+  height:100vh;
+  width:100vw;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:0px
+}
+h1{
+  font-size:  100px;
+  background: url('../../fondotext.png');
+  background-clip: text;
+  background-position: 1vh;
+  color:transparent
+}
+.Welcome{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding:10px;
+  border-radius: 5px;
+  height: 20vh;
+  width:30vw;
+}
+.DivLargo{
+  width:100vw;
+  height: fit-content;
+  background-color: #ffffff8e;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2vh;
+} */
