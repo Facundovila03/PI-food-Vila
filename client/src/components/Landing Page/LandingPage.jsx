@@ -7,7 +7,12 @@ export default function LandingPage() {
       <div className={styles.DivLargo}>WELCOME</div>
       <div className={styles.Welcome}>
         <div
-          style={{ width: "30vw", display: "flex", flexDirection: "column" }}
+          style={{
+            width: "30vw",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
           <h2>Muchas gracias por visitar mi pagina...</h2>
           <h4>

@@ -1,0 +1,8 @@
+.Contenedor{
+    overflow: hidden;
+    min-height: 100vh;
+    margin-top: 0px;
+}
+.Contenedor p {
+    color: white    
+}

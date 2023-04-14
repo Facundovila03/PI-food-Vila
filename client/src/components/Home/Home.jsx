@@ -1,10 +1,5 @@
 import styles from "./Home.module.css";
 
 export default function Home() {
-  return (
-    <div>
-      hola
-      <aside>queonda</aside>
-    </div>
-  );
+  return <div className={styles.Contenedor}>hola</div>;
 }
