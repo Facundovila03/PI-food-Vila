@@ -16,7 +16,6 @@ router.get("/recipes", getRecipeByName); //? recibe por query (?) un nombre y de
 
 router.post("/recipes", createRecipe); //? recibe por body toda la info para crear una receta en la bdd
 
-//todo aca lo unico que falla es que no incluye low fodmap y veggetarian pero no encuentro forma de hacerlo sin harcodearlo
 router.get("/diets", getAllDiets); //? la finalidad es obtener todas las dietas q hay  haciendo una requesta a la api
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

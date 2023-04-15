@@ -2,6 +2,8 @@
     overflow: hidden;
     min-height: 100vh;
     margin-top: 0px;
+    display: flex;
+    margin:1%
 }
 .Contenedor p {
     color: white    

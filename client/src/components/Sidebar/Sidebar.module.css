@@ -1,0 +1,38 @@
+.Contenedor{
+    background-color: rgba(226,185,61,0.82);
+    padding:1rem;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    width: 15%;
+    padding-top: 1.3rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.InputBusqueda{
+    background-color: rgba(184,57,48,0.76);
+    height: 1.7rem;
+    width: 90%;
+    border:0px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.InputBusqueda::placeholder{
+    position:relative;
+    left:10px;
+    color:#1c1f21;
+}
+.BotonBusqueda{
+    background-color: rgba(184,57,48,1);
+    height: 1.8rem;
+    width:10%;
+    border:0px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+h2{
+    margin-left: 2px;
+    width:fit-content;
+    color:#1c1f21;
+}
