@@ -13,10 +13,9 @@ function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(pedirDietas());
-  //   // navigate("/home");
-  // }, []);
+  useEffect(() => {
+    dispatch(pedirDietas());
+  }, [dispatch]);
 
   return (
     <div className="App">

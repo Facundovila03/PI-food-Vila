@@ -1,0 +1,30 @@
+.Contenedor{
+    background-color: rgba(226,185,61,0.82);
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding:2%;
+    margin:5%;
+    border-radius: 10px;;
+    justify-self: center;
+}
+.Imagen{
+    margin:1em;
+    width: 90%;
+    border-radius: 10px;
+}
+.Dietas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin:1em;
+}
+h3{
+    width: fit-content;
+}
+h4{
+    margin:0.5em;
+}

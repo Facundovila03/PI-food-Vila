@@ -1,4 +1,9 @@
 .Contenedor{
     background-color: rgba(226,185,61,0.33);
-    width:85%
+    width:85%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 30px;
 }
