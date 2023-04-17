@@ -8,7 +8,7 @@ const getRecipeByName = require("../controllers/getRecipeByName");
 
 const router = Router();
 
-router.get("/recipes/:idRecipe", getRecipeDetail); // ? recibe por params un id y busco esa recipe, como ? no se pq las recipes tienen un uuid
+router.get("/recipe/:idRecipe", getRecipeDetail); // ? recibe por params un id y busco esa recipe, como ? no se pq las recipes tienen un uuid
 
 router.get("/recipes", getRecipeByName); //? recibe por query (?) un nombre y debo buscar todas las recetas q coincidan--> iLike para q no se acase sensitive
 

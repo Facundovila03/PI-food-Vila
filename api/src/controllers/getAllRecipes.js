@@ -10,8 +10,9 @@ const getAllRecipes = async () => {
     );
 
     let recetasApi = aux.data.results.map(
-      ({ title, image, summary, instructions, diets, healthScore }) => {
+      ({ id, title, image, summary, instructions, diets, healthScore }) => {
         return {
+          id,
           name: title,
           image,
           summary,

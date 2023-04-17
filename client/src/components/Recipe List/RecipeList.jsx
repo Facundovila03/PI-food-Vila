@@ -3,6 +3,7 @@ import NavPages from "../Navegador ed paginas/NavPages";
 import Recipe from "../Recipe/Recipe";
 import styles from "./RecipeList.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function RecipeList() {
   // * peticion a axios donde recibo 100 dietas
@@ -40,11 +41,17 @@ export default function RecipeList() {
       <div className={styles.Contenedor}>
         {recetasAMostrar?.map((element) => {
           return (
-            <Recipe
-              name={element.name}
-              image={element.image}
-              diets={element.diets}
-            />
+            <Link
+              to={`/recipe/${element.id}`}
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Recipe
+                key={element.id}
+                name={element.name}
+                image={element.image}
+                diets={element.diets}
+              />
+            </Link>
           );
         })}
       </div>

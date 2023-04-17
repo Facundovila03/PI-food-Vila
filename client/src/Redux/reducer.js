@@ -7,7 +7,6 @@ export const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case TODAS_LAS_DIETAS:
-      window.localStorage.setItem("allRecipes", action.payload.allRecipes);
       return {
         ...state,
         allRecipes: action.payload.allRecipes,

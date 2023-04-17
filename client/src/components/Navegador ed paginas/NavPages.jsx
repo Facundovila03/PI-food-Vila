@@ -27,7 +27,6 @@ export default function NavPages({
         Prev
       </button>
       {paginas.map((element) => {
-        console.log(element);
         return (
           <button
             className={styles.Numeros}

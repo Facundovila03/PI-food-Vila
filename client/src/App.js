@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getAllRecipes } from "./Redux/action";
+import RecipeDetail from "./components/Recipe detail/RecipeDetail";
 
 function App() {
   const { pathname } = useLocation();
 
   const [dietas, setDietas] = useState(window.localStorage.getItem("dietas"));
-  const [allRecipes, setAllRecipes] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/diets").then(({ data }) => {
@@ -30,6 +30,7 @@ function App() {
         <Route path="/home" element={<Home dietas={dietas} />} />
         {/* <Route path="/diets" element={<Diets />} /> */}
         <Route path="/createRecipe" element={<CreateRecipe />} />
+        <Route path="/recipe/:id" element={<RecipeDetail prop={pathname} />} />
       </Routes>
     </div>
   );

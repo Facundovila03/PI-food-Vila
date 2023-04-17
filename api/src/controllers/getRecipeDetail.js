@@ -16,7 +16,14 @@ const getRecipeDetail = async (req, res) => {
       .then(({ data }) => {
         const { title, image, summary, instructions, healthScore, diets } =
           data;
-        res.json({ title, image, summary, instructions, healthScore, diets });
+        res.json({
+          name: title,
+          image,
+          summary,
+          instructions,
+          healthScore,
+          diets,
+        });
       });
   } else {
     //* sino se lo pido a mi bdd
