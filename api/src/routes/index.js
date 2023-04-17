@@ -6,8 +6,6 @@ const getRecipeByName = require("../controllers/getRecipeByName");
 // Importar todos los routers;
 // Ejemplo: const authRout er = require('./auth.js');
 
-//!!! no te olvides de manejar los errores !!!!!!//
-
 const router = Router();
 
 router.get("/recipes/:idRecipe", getRecipeDetail); // ? recibe por params un id y busco esa recipe, como ? no se pq las recipes tienen un uuid

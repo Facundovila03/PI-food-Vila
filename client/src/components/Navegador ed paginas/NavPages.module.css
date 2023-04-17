@@ -1,0 +1,39 @@
+.Contenedor{
+    background-color: rgba(226,185,61,0.50);
+    /* background-color: blue; */
+    border-top-right-radius: 25px;
+    height:4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.BotonNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width:fit-content;
+    padding:5px;
+    margin-left: 5px;
+    margin-right: 5px ;
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgba(184,57,48,1);
+
+}
+.Numeros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width:3vh;
+    padding:5px;
+    margin-left: 5px;
+    margin-right: 5px ;
+    border-radius: 5px;
+    border: 0px;
+    background-color: rgba(184,57,48,0.76);
+}
+.Numeros:hover{
+    box-shadow: 1px -1px 50px 0px rgba(184,57,48,0.76) inset;
+}
