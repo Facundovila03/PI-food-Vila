@@ -4,6 +4,8 @@ import Recipe from "../Recipe/Recipe";
 import styles from "./RecipeList.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRecipes } from "../../Redux/action";
 
 export default function RecipeList() {
   // * peticion a axios donde recibo 100 dietas
@@ -13,8 +15,11 @@ export default function RecipeList() {
 
   const [paginaActual, setPaginaActual] = useState(1);
 
-  const [allRecipes, setAllRecipes] = useState([]);
+  const dispatch = useDispatch();
+
   const recipesPerPage = 9;
+
+  const allRecipes = useSelector((state) => state.allRecipes);
 
   const recetasEnPagina = paginaActual * recipesPerPage;
   const aux = recetasEnPagina - recipesPerPage;
@@ -25,9 +30,9 @@ export default function RecipeList() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3001/recipes").then(({ data }) => {
-      setAllRecipes(data.allRecipes);
-    });
+    if (!allRecipes.length) {
+      dispatch(getAllRecipes());
+    }
   }, []);
 
   return (

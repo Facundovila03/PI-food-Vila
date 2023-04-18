@@ -2,10 +2,10 @@ import RecipeList from "../Recipe List/RecipeList";
 import Sidebar from "../Sidebar/Sidebar";
 import styles from "./Home.module.css";
 
-export default function Home({ dietas }) {
+export default function Home() {
   return (
     <div className={styles.Contenedor}>
-      <Sidebar dietas={dietas} />
+      <Sidebar />
       <RecipeList />
     </div>
   );

@@ -1,9 +1,19 @@
+import { pedirDietas } from "../../Redux/action";
 import styles from "./Sidebar.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-export default function Sidebar({ dietas }) {
-  const auxDietas = dietas.split(",");
+export default function Sidebar() {
+  const dispatch = useDispatch();
 
-  console.log(auxDietas);
+  const dietas = useSelector((state) => state.allDiets);
+  useEffect(() => {
+    if (!dietas.length) {
+      dispatch(pedirDietas());
+    }
+  }, []);
+
+  dietas.length ? console.log(dietas) : console.log("waiting...");
 
   return (
     <div className={styles.Contenedor}>
@@ -31,14 +41,18 @@ export default function Sidebar({ dietas }) {
           </label>
         </div>
         <h2>Filtrar por dietas</h2>
-        {auxDietas.map((element) => {
-          return (
-            <label className={styles.Dietas}>
-              <input type="checkbox" name="dietas" value={element} />
-              {element}
-            </label>
-          );
-        })}
+        {dietas.length ? (
+          dietas.map((element) => {
+            return (
+              <label className={styles.Dietas}>
+                <input type="checkbox" name="dietas" value={element.name} />
+                {element.name}
+              </label>
+            );
+          })
+        ) : (
+          <div>waiting</div>
+        )}
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
           <label className={styles.RadioInput}>

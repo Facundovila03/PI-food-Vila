@@ -27,7 +27,7 @@ function App() {
       {pathname !== "/" && <NavBar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<Home dietas={dietas} />} />
+        <Route path="/home" element={<Home />} />
         {/* <Route path="/diets" element={<Diets />} /> */}
         <Route path="/createRecipe" element={<CreateRecipe />} />
         <Route path="/recipe/:id" element={<RecipeDetail prop={pathname} />} />

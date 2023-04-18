@@ -1,9 +1,26 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getRecipeDetail } from "../../Redux/action";
+import styles from "./RecipeDetail.module.css";
 
 export default function RecipeDetail() {
-  const { pathname } = useLocation();
-  console.log(pathname);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const currentRecipe = useSelector((state) => state.currentRecipe);
 
-  return <div>aca vamos a ver el detalle de uan recipe</div>;
+  useEffect(() => {
+    if (!Object.keys(currentRecipe).length) {
+      dispatch(getRecipeDetail(id));
+    }
+  }, []);
+
+  let aux = !!Object.keys(currentRecipe).length; // ? si el array que contiene  las keys esta vacio signfica q elobjeto no tiene nada por ende pone aux en false
+
+  return (
+    <div className={styles.Contenedor}>
+      {aux ? <div></div> : <div>waiting for info...</div>}
+    </div>
+  );
 }
