@@ -20,7 +20,19 @@ export default function RecipeDetail() {
 
   return (
     <div className={styles.Contenedor}>
-      {aux ? <div></div> : <div>waiting for info...</div>}
+      {aux ? (
+        <div>
+          <p>{currentRecipe.name}</p>
+          <p>{id}</p>
+          <img src={currentRecipe.image} alt="" />
+          <p>{currentRecipe.summary?.replace(/<[^>]*>/g, "")}</p>
+          <p>{currentRecipe.instructions}</p>
+          <p>{currentRecipe.healthScore}</p>
+          <p>{currentRecipe.diets}</p>
+        </div>
+      ) : (
+        <div>waiting for info...</div>
+      )}
     </div>
   );
 }

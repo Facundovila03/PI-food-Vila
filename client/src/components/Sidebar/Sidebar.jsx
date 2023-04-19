@@ -1,19 +1,33 @@
-import { pedirDietas } from "../../Redux/action";
+import { filterOrigen, pedirDietas } from "../../Redux/action";
 import styles from "./Sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
 
   const dietas = useSelector((state) => state.allDiets);
-  useEffect(() => {
-    if (!dietas.length) {
-      dispatch(pedirDietas());
-    }
-  }, []);
 
-  dietas.length ? console.log(dietas) : console.log("waiting...");
+  const [origen, setOrigen] = useState([]);
+
+  // if (!dietas.length) {
+  //   dispatch(pedirDietas());
+  // }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let aux = [...origen];
+    console.log(aux);
+    dispatch(filterOrigen(aux));
+  };
+
+  const handleOrigen = (event) => {
+    if (!origen.includes(event.target.value))
+      setOrigen([...origen, event.target.value]);
+    else {
+      setOrigen(origen.filter((element) => element !== event.target.value));
+    }
+  };
 
   return (
     <div className={styles.Contenedor}>
@@ -28,20 +42,34 @@ export default function Sidebar() {
       <br />
       <div className={styles.Filtros}>
         <h2>Filtrar por origen</h2>
-        <div className={styles.Origen}>
+        <form
+          className={styles.Origen}
+          onSubmit={(event) => handleSubmit(event)}
+        >
           <label className={styles.RadioInput}>
             {" "}
-            <input type="checkbox" name="FiltrarOrigen" value="Online" />
+            <input
+              type="checkbox"
+              name="FiltrarOrigen"
+              value="online"
+              onChange={(event) => handleOrigen(event)}
+            />
             Online
           </label>
           <label className={styles.RadioInput}>
             {" "}
-            <input type="checkbox" name="FiltrarOrigen" value="Propias" />
+            <input
+              type="checkbox"
+              name="FiltrarOrigen"
+              value="propias"
+              onChange={(event) => handleOrigen(event)}
+            />
             Propias
           </label>
-        </div>
+          <button type="submit"> Filtrar</button>
+        </form>
         <h2>Filtrar por dietas</h2>
-        {dietas.length ? (
+        {/* {dietas.length ? (
           dietas.map((element) => {
             return (
               <label className={styles.Dietas}>
@@ -52,7 +80,7 @@ export default function Sidebar() {
           })
         ) : (
           <div>waiting</div>
-        )}
+        )} */}
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
           <label className={styles.RadioInput}>

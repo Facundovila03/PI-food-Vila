@@ -1,4 +1,9 @@
-import { PEDIR_DIETAS, TODAS_LAS_RECETAS, DETAIL_RECETA } from "./action";
+import {
+  PEDIR_DIETAS,
+  TODAS_LAS_RECETAS,
+  DETAIL_RECETA,
+  FILTRO_ORIGIN,
+} from "./action";
 
 export const initialState = {
   allDiets: [],
@@ -22,6 +27,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentRecipe: action.payload,
+      };
+    case FILTRO_ORIGIN:
+      return {
+        ...state,
+        allRecipes: action.payload,
       };
     default:
       return {
