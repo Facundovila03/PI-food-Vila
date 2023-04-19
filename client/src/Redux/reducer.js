@@ -45,14 +45,14 @@ const reducer = (state = initialState, action) => {
       let recetasOrdenadas = [...state.allRecipes];
       recetasOrdenadas =
         action.payload === "a-z"
-          ? state.allRecipes.sort((a, b) => {
-              if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-              if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
-              return 0;
-            })
-          : state.allRecipes.sort((a, b) => {
+          ? recetasOrdenadas.sort((a, b) => {
               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
               if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+              return 0;
+            })
+          : recetasOrdenadas.sort((a, b) => {
+              if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+              if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
               return 0;
             });
       console.log(recetasOrdenadas);
@@ -64,12 +64,12 @@ const reducer = (state = initialState, action) => {
       let recetasOrdenadasScore = [...state.allRecipes];
       recetasOrdenadasScore =
         action.payload === "min-max"
-          ? state.allRecipes.sort((a, b) => {
+          ? recetasOrdenadasScore.sort((a, b) => {
               if (a.health_score > b.health_score) return 1;
               if (a.health_score < b.health_score) return -1;
               return 0;
             })
-          : state.allRecipes.sort((a, b) => {
+          : recetasOrdenadasScore.sort((a, b) => {
               if (a.health_score < b.health_score) return 1;
               if (a.health_score > b.health_score) return -1;
               return 0;
