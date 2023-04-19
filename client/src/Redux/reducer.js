@@ -3,6 +3,7 @@ import {
   TODAS_LAS_RECETAS,
   DETAIL_RECETA,
   FILTRO_ORIGIN,
+  FILTRO_DIETS,
 } from "./action";
 
 export const initialState = {
@@ -29,6 +30,11 @@ const reducer = (state = initialState, action) => {
         currentRecipe: action.payload,
       };
     case FILTRO_ORIGIN:
+      return {
+        ...state,
+        allRecipes: action.payload,
+      };
+    case FILTRO_DIETS:
       return {
         ...state,
         allRecipes: action.payload,

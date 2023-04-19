@@ -1,4 +1,4 @@
-import { filterOrigen, pedirDietas } from "../../Redux/action";
+import { filterDiets, filterOrigen, pedirDietas } from "../../Redux/action";
 import styles from "./Sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,16 +9,34 @@ export default function Sidebar() {
   const dietas = useSelector((state) => state.allDiets);
 
   const [origen, setOrigen] = useState([]);
+  const [filtroDietas, setFiltroDietas] = useState([]);
 
-  // if (!dietas.length) {
-  //   dispatch(pedirDietas());
-  // }
+  if (!dietas.length) {
+    dispatch(pedirDietas());
+  }
 
-  const handleSubmit = (event) => {
+  const handleSubmitOrigen = (event) => {
     event.preventDefault();
     let aux = [...origen];
     console.log(aux);
     dispatch(filterOrigen(aux));
+  };
+
+  const handleSubmitDietas = (event) => {
+    event.preventDefault();
+    let aux = [...filtroDietas];
+    console.log(aux);
+    dispatch(filterDiets(aux));
+  };
+
+  const handleDiet = (event) => {
+    if (!filtroDietas.includes(event.target.value))
+      setFiltroDietas([...filtroDietas, event.target.value]);
+    else {
+      setFiltroDietas(
+        filtroDietas.filter((element) => element !== event.target.value)
+      );
+    }
   };
 
   const handleOrigen = (event) => {
@@ -44,7 +62,7 @@ export default function Sidebar() {
         <h2>Filtrar por origen</h2>
         <form
           className={styles.Origen}
-          onSubmit={(event) => handleSubmit(event)}
+          onSubmit={(event) => handleSubmitOrigen(event)}
         >
           <label className={styles.RadioInput}>
             {" "}
@@ -69,18 +87,26 @@ export default function Sidebar() {
           <button type="submit"> Filtrar</button>
         </form>
         <h2>Filtrar por dietas</h2>
-        {/* {dietas.length ? (
-          dietas.map((element) => {
-            return (
-              <label className={styles.Dietas}>
-                <input type="checkbox" name="dietas" value={element.name} />
-                {element.name}
-              </label>
-            );
-          })
-        ) : (
-          <div>waiting</div>
-        )} */}
+        <form onSubmit={(event) => handleSubmitDietas(event)}>
+          {dietas.length ? (
+            dietas.map((element) => {
+              return (
+                <label className={styles.Dietas}>
+                  <input
+                    type="checkbox"
+                    name="dietas"
+                    value={element.name}
+                    onChange={handleDiet}
+                  />
+                  {element.name}
+                </label>
+              );
+            })
+          ) : (
+            <div>waiting</div>
+          )}
+          <button type="submit"> Filtrar</button>
+        </form>
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
           <label className={styles.RadioInput}>
