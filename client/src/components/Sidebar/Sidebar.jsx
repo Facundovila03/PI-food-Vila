@@ -1,4 +1,10 @@
-import { filterDiets, filterOrigen, pedirDietas } from "../../Redux/action";
+import {
+  filterDiets,
+  filterOrigen,
+  pedirDietas,
+  sortAlfabeticamente,
+  sortScore,
+} from "../../Redux/action";
 import styles from "./Sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -7,6 +13,7 @@ export default function Sidebar() {
   const dispatch = useDispatch();
 
   const dietas = useSelector((state) => state.allDiets);
+  const [order, setOrder] = useState("");
 
   const [origen, setOrigen] = useState([]);
   const [filtroDietas, setFiltroDietas] = useState([]);
@@ -45,6 +52,20 @@ export default function Sidebar() {
     else {
       setOrigen(origen.filter((element) => element !== event.target.value));
     }
+  };
+
+  const handleSortAlf = (event) => {
+    event.preventDefault();
+    console.log("cambio el select");
+    dispatch(sortAlfabeticamente(event.target.value));
+    setOrder(event.target.value);
+  };
+
+  const handleSortScore = (event) => {
+    event.preventDefault();
+    console.log("cambio el select Score");
+    dispatch(sortScore(event.target.value));
+    setOrder(event.target.value);
   };
 
   return (
@@ -109,41 +130,21 @@ export default function Sidebar() {
         </form>
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
-          <label className={styles.RadioInput}>
-            {" "}
-            <input
-              type="radio"
-              name="AscendenteDescendente"
-              value="ascendente"
-            />
-            Ascendente
-          </label>
-          <label className={styles.RadioInput}>
-            {" "}
-            <input
-              type="radio"
-              name="AscendenteDescendente"
-              value="descendente"
-            />
-            Descendente
-          </label>
-          <hr className={styles.Divisor} />
-          <div className={styles.Origen}>
-            <label className={styles.RadioInput} style={{ width: "100%" }}>
+          <select onChange={(event) => handleSortAlf(event)}>
+            <option disabled selected>
+              Orden alfabetico
+            </option>
+            <option value="a-z"> A - Z</option>
+            <option value="z-a"> Z - A</option>
+          </select>
+          <select onChange={(event) => handleSortScore(event)}>
+            <option disabled selected>
               {" "}
-              <input type="radio" name="healthAlphabetic" value="healthScore" />
-              Puntaje saludable
-            </label>
-            <label className={styles.RadioInput}>
-              {" "}
-              <input
-                type="radio"
-                name="healthAlphabetic"
-                value="alfabeticamente"
-              />
-              Alfabeticamente
-            </label>
-          </div>
+              Puntaje saludable{" "}
+            </option>
+            <option value="min-max">Min - Max</option>
+            <option value="max-min">Max - Min</option>
+          </select>
         </div>
       </div>
     </div>

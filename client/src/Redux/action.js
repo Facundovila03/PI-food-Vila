@@ -5,6 +5,8 @@ export const TODAS_LAS_RECETAS = "TODAS_LAS_RECETAS";
 export const DETAIL_RECETA = "DETAIL_RECETA";
 export const FILTRO_ORIGIN = "FILTRO_ORIGIN";
 export const FILTRO_DIETS = "FILTRO_DIETS";
+export const SORT_ALFABETICO = "SORT_ALFABETICO";
+export const SORT_SCORE = "SORT_SCORE";
 
 export const pedirDietas = () => {
   const endpoint = "http://localhost:3001/diets";
@@ -102,5 +104,18 @@ export const filterDiets = (arg) => {
         });
       }
     });
+  };
+};
+export const sortAlfabeticamente = (value) => {
+  console.log("llegamos a actions");
+  return {
+    type: SORT_ALFABETICO,
+    payload: value,
+  };
+};
+export const sortScore = (value) => {
+  return {
+    type: SORT_SCORE,
+    payload: value,
   };
 };
