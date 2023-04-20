@@ -15,13 +15,6 @@ function App() {
 
   const [dietas, setDietas] = useState(window.localStorage.getItem("dietas"));
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/diets").then(({ data }) => {
-      const arrDietas = data.flatMap((element) => element.name);
-      window.localStorage.setItem("dietas", arrDietas);
-    });
-  }, []);
-
   return (
     <div className="App">
       {pathname !== "/" && <NavBar />}

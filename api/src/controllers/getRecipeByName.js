@@ -12,7 +12,7 @@ const getRecipeByName = async (req, res) => {
   // res.json({ allRecipes });
 
   if (name) {
-    console.log("hay query");
+    console.log(name);
     let recipesMatch = allRecipes.filter((element) =>
       element.name.toLowerCase().includes(name.toString().toLowerCase())
     );
@@ -24,6 +24,7 @@ const getRecipeByName = async (req, res) => {
         .json({ error: "No se encontro una receta con ese nombre" });
     }
   } else {
+    console.log(name);
     console.log("no hay query");
     res.status(200).json({ allRecipes });
   }

@@ -2,6 +2,7 @@ import {
   filterDiets,
   filterOrigen,
   pedirDietas,
+  searchName,
   sortAlfabeticamente,
   sortScore,
 } from "../../Redux/action";
@@ -17,6 +18,7 @@ export default function Sidebar() {
 
   const [origen, setOrigen] = useState([]);
   const [filtroDietas, setFiltroDietas] = useState([]);
+  const [inputText, setInputText] = useState("");
 
   if (!dietas.length) {
     dispatch(pedirDietas());
@@ -54,6 +56,11 @@ export default function Sidebar() {
     }
   };
 
+  const handleChange = (event) => {
+    const valor = event.target.value;
+    setInputText(valor);
+  };
+
   const handleSortAlf = (event) => {
     event.preventDefault();
     console.log("cambio el select");
@@ -68,16 +75,33 @@ export default function Sidebar() {
     setOrder(event.target.value);
   };
 
+  const handleSubmitName = (event) => {
+    event.preventDefault();
+    console.log(inputText);
+    try {
+      dispatch(searchName(inputText));
+    } catch (error) {
+      return error;
+    }
+  };
+
   return (
     <div className={styles.Contenedor}>
-      <div style={{ display: "flex", width: "100%" }}>
+      <form
+        onSubmit={handleSubmitName}
+        style={{ display: "flex", width: "100%" }}
+      >
         <input
           type="text"
           placeholder="Bucar receta..."
           className={styles.InputBusqueda}
+          onChange={handleChange}
+          value={inputText}
         />
-        <button className={styles.BotonBusqueda}>&#x1F50E;&#xFE0E;</button>
-      </div>
+        <button type="submit" className={styles.BotonBusqueda}>
+          &#x1F50E;&#xFE0E;
+        </button>
+      </form>
       <br />
       <div className={styles.Filtros}>
         <h2>Filtrar por origen</h2>

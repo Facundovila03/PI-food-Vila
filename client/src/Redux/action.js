@@ -7,6 +7,7 @@ export const FILTRO_ORIGIN = "FILTRO_ORIGIN";
 export const FILTRO_DIETS = "FILTRO_DIETS";
 export const SORT_ALFABETICO = "SORT_ALFABETICO";
 export const SORT_SCORE = "SORT_SCORE";
+export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
 
 export const pedirDietas = () => {
   const endpoint = "http://localhost:3001/diets";
@@ -117,5 +118,30 @@ export const sortScore = (value) => {
   return {
     type: SORT_SCORE,
     payload: value,
+  };
+};
+
+export const searchName = (value) => {
+  const endpoint = `http://localhost:3001/recipe?name=${value}`;
+  return (dispatch) => {
+    try {
+      axios.get(endpoint).then(({ data }) => {
+        if (value) {
+          // * aca si me pasaron un name
+          return dispatch({
+            type: SEARCH_BY_NAME,
+            payload: data.recipesMatch,
+          });
+        } else {
+          //* a ca si no
+          return dispatch({
+            type: TODAS_LAS_RECETAS,
+            payload: data,
+          });
+        }
+      });
+    } catch {
+      return alert("No se encontro receta con ese nombre");
+    }
   };
 };

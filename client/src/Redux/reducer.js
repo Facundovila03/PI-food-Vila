@@ -6,6 +6,7 @@ import {
   FILTRO_DIETS,
   SORT_ALFABETICO,
   SORT_SCORE,
+  SEARCH_BY_NAME,
 } from "./action";
 
 export const initialState = {
@@ -78,6 +79,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allRecipes: recetasOrdenadasScore,
+      };
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        allRecipes: action.payload,
       };
     default:
       return {
