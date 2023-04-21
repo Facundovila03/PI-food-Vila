@@ -12,7 +12,7 @@ router.get("/recipe/:idRecipe", getRecipeDetail); // ? recibe por params un id y
 
 router.get("/recipe", getRecipeByName); //? recibe por query (?) un nombre y debo buscar todas las recetas q coincidan--> iLike para q no se acase sensitive
 
-router.post("/recipes", createRecipe); //? recibe por body toda la info para crear una receta en la bdd
+router.post("/recipe", createRecipe); //? recibe por body toda la info para crear una receta en la bdd
 
 router.get("/diets", getAllDiets); //? la finalidad es obtener todas las dietas q hay  haciendo una requesta a la api
 // Configurar los routers

@@ -3,6 +3,8 @@ const { Recipe } = require("../db");
 
 const createRecipe = async (req, res) => {
   const { name, image, summary, health_score, instructions, diets } = req.body;
+  console.log({ name, image, summary, health_score, instructions, diets });
+  console.log(Number(health_score));
   try {
     const [recipe, created] = await Recipe.findOrCreate({
       where: { name },

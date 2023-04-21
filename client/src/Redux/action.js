@@ -8,6 +8,8 @@ export const FILTRO_DIETS = "FILTRO_DIETS";
 export const SORT_ALFABETICO = "SORT_ALFABETICO";
 export const SORT_SCORE = "SORT_SCORE";
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME";
+export const CREAR_RECETA = "CREAR_RECETA";
+export const BORRAR_RECETA_DETAIL = "BORRAR_RECETA_DETAIL";
 
 export const pedirDietas = () => {
   const endpoint = "http://localhost:3001/diets";
@@ -143,5 +145,23 @@ export const searchName = (value) => {
     } catch {
       return alert("No se encontro receta con ese nombre");
     }
+  };
+};
+
+export const crearReceta = (arg) => {
+  const endpoint = "http://localhost:3001/recipe";
+  return (dispatch) => {
+    axios.post(endpoint, arg).then(() => {
+      return dispatch({
+        type: CREAR_RECETA,
+        payload: arg,
+      });
+    });
+  };
+};
+
+export const borrarRecetaDetail = () => {
+  return {
+    type: BORRAR_RECETA_DETAIL,
   };
 };

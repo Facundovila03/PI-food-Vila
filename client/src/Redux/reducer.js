@@ -7,6 +7,8 @@ import {
   SORT_ALFABETICO,
   SORT_SCORE,
   SEARCH_BY_NAME,
+  CREAR_RECETA,
+  BORRAR_RECETA_DETAIL,
 } from "./action";
 
 export const initialState = {
@@ -84,6 +86,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allRecipes: action.payload,
+      };
+    case CREAR_RECETA:
+      return {
+        ...state,
+        allRecipes: action.payload,
+        ...state.allRecipes,
+      };
+    case BORRAR_RECETA_DETAIL:
+      return {
+        ...state,
+        currentRecipe: [],
       };
     default:
       return {
