@@ -26,26 +26,43 @@ export default function RecipeDetail() {
   return (
     <div className={styles.Contenedor}>
       {aux ? (
-        <div>
-          <p>{currentRecipe.name}</p>
-          <p>{id}</p>
-          <img src={currentRecipe.image} alt="" />
-          <p>{currentRecipe.summary?.replace(/<[^>]*>/g, "")}</p>
-          <p>{currentRecipe.instructions?.replace(/<[^>]*>/g, "")}</p>
-          <p>{currentRecipe.healthScore}</p>
-          {currentRecipe.diets ? (
-            isNaN(id) ? (
-              currentRecipe.diets.map((elem) => {
-                return <p>{elem.name}</p>;
-              })
-            ) : (
-              currentRecipe.diets.map((elem) => {
-                return <p>{elem}</p>;
-              })
-            )
-          ) : (
-            <div>waiting for diets...</div>
-          )}
+        <div style={{ width: "100%", display: "flex" }}>
+          <div className={styles.Datos}>
+            <div className={styles.FondoDatos}>
+              <img src={currentRecipe.image} alt="" />
+              <p className={styles.Info}>Name: {currentRecipe.name}</p>
+              <p className={styles.Info}>ID: {id}</p>
+              <p className={styles.Info}>
+                Puntaje saludable: {currentRecipe.healthScore}
+              </p>
+            </div>
+          </div>
+          <div className={styles.DatosLargos}>
+            <div className={styles.FondoDatosLargos}>
+              <p className={styles.Info}>
+                {currentRecipe.summary?.replace(/<[^>]*>/g, "")}
+              </p>
+              <p className={styles.Info}>
+                {currentRecipe.instructions?.replace(/<[^>]*>/g, "")}
+              </p>
+              <p>Dietas: </p>
+              <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                {currentRecipe.diets ? (
+                  isNaN(id) ? (
+                    currentRecipe.diets.map((elem) => {
+                      return <p className={styles.Info}>{elem.name}</p>;
+                    })
+                  ) : (
+                    currentRecipe.diets.map((elem) => {
+                      return <p className={styles.Info}>{elem}</p>;
+                    })
+                  )
+                ) : (
+                  <div>waiting for diets...</div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div>waiting for info...</div>

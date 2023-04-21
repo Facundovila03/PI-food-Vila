@@ -1,7 +1,4 @@
-@font-face {
- font-family: WELCOME;
- src: url(https://fonts.google.com/specimen/DM+Serif+Display?preview.text=WELCOME&preview.size=79&preview.text_type=custom); 
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Vina+Sans&display=swap');
 .Contenedor{
     background-image: url('../../backsplashLandingPage.png');
   height: 100vh;
@@ -16,7 +13,7 @@
 }
 
 .DivLargo{
-  font-family: WELCOME;
+  font-family: 'Vina Sans', cursive;
   color:black;
   font-style: italic;
   width:100vw;

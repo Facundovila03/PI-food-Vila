@@ -13,14 +13,6 @@ import RecipeDetail from "./components/Recipe detail/RecipeDetail";
 function App() {
   const { pathname } = useLocation();
 
-  const crearRecipe = (arg) => {
-    const endpoint = "http://localhost:3001/recipe";
-    console.log(arg);
-    axios.post(endpoint, arg).then(() => {
-      alert("Receta creada correctamente");
-    });
-  };
-
   return (
     <div className="App">
       {pathname !== "/" && <NavBar />}
@@ -28,10 +20,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         {/* <Route path="/diets" element={<Diets />} /> */}
-        <Route
-          path="/createRecipe"
-          element={<CreateRecipe crearRecipe={crearRecipe} />}
-        />
+        <Route path="/createRecipe" element={<CreateRecipe />} />
         <Route path="/recipe/:id" element={<RecipeDetail prop={pathname} />} />
       </Routes>
     </div>

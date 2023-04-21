@@ -2,5 +2,52 @@
     background-color: rgba(61, 163, 93, 0.50);
     margin:1%;
     border-radius: 25px;
-    height: 100vh;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.Datos{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    border-right: 1px solid black;
+    align-items: center;
+}
+.Datos img{
+    width: 70%;
+    align-self: center;
+    border-radius: 15px;
+}
+.DatosLargos{
+    width: 60%;
+}
+.FondoDatos{
+    background-color: rgba(34, 95, 54, 0.89);
+    height: fit-content;
+    width: fit-content;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    align-self: center;
+    margin-top: 10%;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.Info{
+    background-color: rgba(155, 167, 61, 0.651);
+    border-radius: 5px;
+    padding: 0.5em;
+    width: fit-content;
+    justify-self: center;
+    align-self: center;
+    margin:1% auto 1% auto;
+    box-shadow: inset 0px 0px 40px -20px rgba(0, 0, 0, 0.322);
+}
+.FondoDatosLargos{
+    background-color: rgba(34, 95, 54, 0.89);
+    margin:5%;
+    padding:1em;
+    border-radius: 5px;
+    
 }

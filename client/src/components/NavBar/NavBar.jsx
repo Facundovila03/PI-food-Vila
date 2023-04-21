@@ -6,7 +6,7 @@ export default function NavBar() {
   console.log(pathname);
   return (
     <>
-      <div className={styles.Contenedor}>h</div>
+      <div className={styles.Contenedor}>RINCÓN GASTRONÓMICO</div>
       <div className={styles.ContenedorNavegacion}>
         <Link
           to={"/"}
