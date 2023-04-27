@@ -77,7 +77,6 @@ const reducer = (state = initialState, action) => {
               if (a.health_score > b.health_score) return -1;
               return 0;
             });
-      console.log(recetasOrdenadasScore);
       return {
         ...state,
         allRecipes: recetasOrdenadasScore,

@@ -63,3 +63,13 @@ h2{
     margin-bottom: 5%;
     font-size: 18px;
 }
+.SubmitButton{
+padding: 0.5em;
+background-color: rgba(184,57,48,0.76);
+border: 0px;
+border-radius: 5px;
+}
+.Sorts{
+    background-color: rgba(235, 131, 13, 0.753);
+    
+}

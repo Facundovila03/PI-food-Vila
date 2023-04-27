@@ -27,7 +27,6 @@ export default function Sidebar() {
   const handleSubmitOrigen = (event) => {
     event.preventDefault();
     let aux = [...origen];
-    console.log(aux);
     dispatch(filterOrigen(aux));
   };
 
@@ -63,7 +62,6 @@ export default function Sidebar() {
 
   const handleSortAlf = (event) => {
     event.preventDefault();
-    console.log("cambio el select");
     dispatch(sortAlfabeticamente(event.target.value));
     setOrder(event.target.value);
   };
@@ -77,7 +75,6 @@ export default function Sidebar() {
 
   const handleSubmitName = (event) => {
     event.preventDefault();
-    console.log(inputText);
     try {
       dispatch(searchName(inputText));
     } catch (error) {
@@ -129,7 +126,10 @@ export default function Sidebar() {
             />
             Propias
           </label>
-          <button type="submit"> Filtrar</button>
+          <button className={styles.SubmitButton} type="submit">
+            {" "}
+            Filtrar
+          </button>
         </form>
         <h2>Filtrar por dietas</h2>
         <form onSubmit={(event) => handleSubmitDietas(event)}>
@@ -150,18 +150,27 @@ export default function Sidebar() {
           ) : (
             <div>waiting</div>
           )}
-          <button type="submit"> Filtrar</button>
+          <button className={styles.SubmitButton} type="submit">
+            {" "}
+            Filtrar
+          </button>
         </form>
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
-          <select onChange={(event) => handleSortAlf(event)}>
+          <select
+            className={styles.Sorts}
+            onChange={(event) => handleSortAlf(event)}
+          >
             <option disabled selected>
               Orden alfabetico
             </option>
             <option value="a-z"> A - Z</option>
             <option value="z-a"> Z - A</option>
           </select>
-          <select onChange={(event) => handleSortScore(event)}>
+          <select
+            className={styles.Sorts}
+            onChange={(event) => handleSortScore(event)}
+          >
             <option disabled selected>
               {" "}
               Puntaje saludable{" "}

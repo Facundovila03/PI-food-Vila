@@ -19,8 +19,6 @@ export default function RecipeDetail() {
     };
   }, []);
 
-  console.log(currentRecipe);
-
   let aux = !!Object.keys(currentRecipe).length; // ? si el array que contiene  las keys esta vacio signfica q elobjeto no tiene nada por ende pone aux en false
 
   return (

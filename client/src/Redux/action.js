@@ -38,7 +38,6 @@ export const getAllRecipes = () => {
 };
 export const getRecipeDetail = (id) => {
   const endpoint = `http://localhost:3001/recipe/${id}`;
-  console.log("estas pidiendo una receta especifica");
   return (dispatch) => {
     axios.get(endpoint).then(({ data }) => {
       return dispatch({
@@ -52,7 +51,6 @@ export const getRecipeDetail = (id) => {
 export const filterOrigen = (arg) => {
   // ? arg siempre va a ser un array
   const endpoint = "http://localhost:3001/recipe";
-  console.log(arg);
   return (dispatch) => {
     axios.get(endpoint).then(({ data }) => {
       if (arg.length === 1) {
@@ -64,7 +62,6 @@ export const filterOrigen = (arg) => {
           });
         } else {
           const aux = data.allRecipes.filter((element) => isNaN(element.id));
-          console.log(aux);
           return dispatch({
             type: FILTRO_ORIGIN,
             payload: aux,
@@ -82,7 +79,6 @@ export const filterOrigen = (arg) => {
 
 export const filterDiets = (arg) => {
   const endpoint = "http://localhost:3001/recipe";
-  console.log(arg);
   return (dispatch) => {
     axios.get(endpoint).then(({ data }) => {
       if (arg.length === 12 || arg.length === 0) {
@@ -91,7 +87,9 @@ export const filterDiets = (arg) => {
           payload: data,
         });
       } else {
+        console.log(data.allRecipes);
         let recetasMatch = data.allRecipes.filter((element) => {
+          console.log(element.diets);
           if (element.diets.every((dieta) => typeof dieta === "string"))
             // * esto esta porque las recetas creadas en la db  tienen en diets un array de objetos con prop name, en lugar de una rray de strings
             return element.diets.some((dieta) => arg.includes(dieta));

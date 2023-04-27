@@ -1,17 +1,17 @@
 import styles from "./NavPages.module.css";
 
 export default function NavPages({
-  cambiarPagina,
-  recipesPerPage,
-  allRecipes,
-  paginaActual,
+  cambiarPagina, //fn
+  recipesPerPage, // 9
+  allRecipes, // 100
+  paginaActual, //1
 }) {
   let paginas = [];
 
   for (let i = 0; i < Math.ceil(allRecipes.length / recipesPerPage); i++) {
+    //                                 100            /   9     => 11.111 =>12
     paginas.push(i + 1);
   }
-  console.log(paginas.length);
   return (
     <div className={styles.Contenedor}>
       <button

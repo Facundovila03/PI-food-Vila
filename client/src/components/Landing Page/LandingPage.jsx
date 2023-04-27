@@ -24,7 +24,6 @@ export default function LandingPage() {
           </h4>
           <Link to={"/home"} className={styles.Boton}>
             Next
-            {/* <button className={styles.Boton}>Next</button> */}
           </Link>
         </div>
       </div>

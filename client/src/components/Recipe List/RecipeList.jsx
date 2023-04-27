@@ -21,7 +21,7 @@ export default function RecipeList() {
 
   const allRecipes = useSelector((state) => state.allRecipes);
 
-  const recetasEnPagina = paginaActual * recipesPerPage;
+  const recetasEnPagina = paginaActual * recipesPerPage; //9
   const aux = recetasEnPagina - recipesPerPage;
   const recetasAMostrar = allRecipes.slice(aux, recetasEnPagina);
 

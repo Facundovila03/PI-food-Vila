@@ -29,21 +29,14 @@ export default function CreateRecipe() {
     instructions: "",
   });
 
-  const [created, SetCreated] = useState("");
-
   const crearRecipe = (arg) => {
     const endpoint = "http://localhost:3001/recipe";
     console.log(arg);
-    axios
-      .post(endpoint, arg)
-      .then(() => {
-        alert("Receta creada correctamente");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("hubo un error");
-      });
+    axios.post(endpoint, arg).then(() => {
+      alert("Receta creada correctamente");
+    });
   };
+
   const handleChange = (event) => {
     event.preventDefault();
     const property = event.target.name;
@@ -54,7 +47,15 @@ export default function CreateRecipe() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    crearRecipe(input);
+    if (
+      errors.name ||
+      errors.image ||
+      errors.summary ||
+      errors.health_score ||
+      errors.instructions
+    ) {
+      alert("no se pudo crear la receta, controla los errores");
+    } else crearRecipe(input);
   };
   const handleDiet = (event) => {
     if (!input.diets.includes(event.target.value)) {

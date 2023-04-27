@@ -5,7 +5,6 @@ const axios = require("axios");
 
 const getRecipeDetail = async (req, res) => {
   const { idRecipe } = req.params;
-  console.log(idRecipe);
   if (Number(idRecipe)) {
     // * aca si lo que recibo es un numero o sea, la peticion a la api
     console.log("buscare en la api");

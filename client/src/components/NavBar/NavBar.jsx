@@ -28,12 +28,12 @@ export default function NavBar() {
         >
           <strong>Crea tu receta!</strong>
         </Link>
-        <Link
+        {/* <Link
           to={"/diets"}
           className={pathname === "/diets" ? styles.RutaActual : styles.Rutas}
         >
           <strong>Dietas</strong>
-        </Link>
+        </Link> */}
       </div>
     </>
   );
