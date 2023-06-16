@@ -32,9 +32,14 @@ export default function CreateRecipe() {
   const crearRecipe = (arg) => {
     const endpoint = "http://localhost:3001/recipe";
     console.log(arg);
-    axios.post(endpoint, arg).then(() => {
-      alert("Receta creada correctamente");
-    });
+    axios
+      .post(endpoint, arg)
+      .then(() => {
+        alert("Receta creada correctamente");
+      })
+      .catch((error) => {
+        alert(error.response.data.error);
+      });
   };
 
   const handleChange = (event) => {

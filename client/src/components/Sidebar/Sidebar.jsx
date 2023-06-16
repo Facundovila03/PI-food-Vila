@@ -84,7 +84,7 @@ export default function Sidebar() {
 
   return (
     <div className={styles.Contenedor}>
-      <form
+      <form //! barra de busqueda
         onSubmit={handleSubmitName}
         style={{ display: "flex", width: "100%" }}
       >
@@ -102,7 +102,7 @@ export default function Sidebar() {
       <br />
       <div className={styles.Filtros}>
         <h2>Filtrar por origen</h2>
-        <form
+        <form //!filtro por origen
           className={styles.Origen}
           onSubmit={(event) => handleSubmitOrigen(event)}
         >
@@ -133,6 +133,7 @@ export default function Sidebar() {
         </form>
         <h2>Filtrar por dietas</h2>
         <form onSubmit={(event) => handleSubmitDietas(event)}>
+          {" "}
           {dietas.length ? (
             dietas.map((element) => {
               return (
@@ -157,7 +158,7 @@ export default function Sidebar() {
         </form>
         <h2>Ordenar</h2>
         <div className={styles.Origen}>
-          <select
+          <select //! select alfabetico
             className={styles.Sorts}
             onChange={(event) => handleSortAlf(event)}
           >
@@ -167,7 +168,7 @@ export default function Sidebar() {
             <option value="a-z"> A - Z</option>
             <option value="z-a"> Z - A</option>
           </select>
-          <select
+          <select //!select healthscore
             className={styles.Sorts}
             onChange={(event) => handleSortScore(event)}
           >
